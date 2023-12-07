@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Trait\DataTrait;
 use App\Models\Catigory;
+use App\Models\Location;
 use App\Models\Order_Details;
 use App\Models\product;
 use Illuminate\Http\Request;
@@ -60,10 +61,15 @@ class ProductController extends Controller
             $created_at = $product->created_at;
 
 
+            $storeID = $product->store->id;
             $storeName = $product->store->name;
             $storePhone = $product->store->phone;
             $storeStatus = $product->store->status;
             $storeImg = $product->store->img;
+            $locationID = $product->store->location_id;
+            $location = Location::where('id', $locationID)->first();
+            $locationLongitude = $location->longitude;
+            $locationLatitude = $location->latitude;
 
 
             $categories = [];
@@ -88,10 +94,13 @@ class ProductController extends Controller
                 'details' => $details,
                 'img' => $img,
                 'created_at' => $created_at,
+                'storeID' => $storeID,
                 'storeName' => $storeName,
                 'storePhone' => $storePhone,
                 'storeStatus' => $storeStatus,
                 'storeImg' => $storeImg,
+                'locationLongitude' => $locationLongitude,
+                'locationLatitude' => $locationLatitude,
                 'categories' => $categories,
             ];
         }
@@ -147,10 +156,16 @@ class ProductController extends Controller
             $created_at = $product->created_at;
 
 
+            $storeID = $product->store->id;
             $storeName = $product->store->name;
             $storePhone = $product->store->phone;
             $storeStatus = $product->store->status;
             $storeImg = $product->store->img;
+            $locationID = $product->store->location_id;
+            $location = Location::where('id', $locationID)->first();
+            $locationLongitude = $location->longitude;
+            $locationLatitude = $location->latitude;
+            
 
 
             $categories = [];
@@ -175,10 +190,13 @@ class ProductController extends Controller
                 'details' => $details,
                 'img' => $img,
                 'created_at' => $created_at,
+                'storeID' => $storeID,
                 'storeName' => $storeName,
                 'storePhone' => $storePhone,
                 'storeStatus' => $storeStatus,
                 'storeImg' => $storeImg,
+                'locationLongitude' => $locationLongitude,
+                'locationLatitude' => $locationLatitude,
                 'categories' => $categories,
             ];
         }
@@ -238,10 +256,15 @@ class ProductController extends Controller
             $created_at = $product->created_at;
 
 
+            $storeID = $product->store->id;
             $storeName = $product->store->name;
             $storePhone = $product->store->phone;
             $storeStatus = $product->store->status;
             $storeImg = $product->store->img;
+            $locationID = $product->store->location_id;
+            $location = Location::where('id', $locationID)->first();
+            $locationLongitude = $location->longitude;
+            $locationLatitude = $location->latitude;
 
 
             $categories = [];
@@ -266,10 +289,13 @@ class ProductController extends Controller
                 'details' => $details,
                 'img' => $img,
                 'created_at' => $created_at,
+                'storeID' => $storeID,
                 'storeName' => $storeName,
                 'storePhone' => $storePhone,
                 'storeStatus' => $storeStatus,
                 'storeImg' => $storeImg,
+                'locationLongitude' => $locationLongitude,
+                'locationLatitude' => $locationLatitude,
                 'categories' => $categories,
             ];
         }
@@ -299,10 +325,15 @@ class ProductController extends Controller
             $created_at = $product->created_at;
 
 
+            $storeID = $product->store->id;
             $storeName = $product->store->name;
             $storePhone = $product->store->phone;
             $storeStatus = $product->store->status;
             $storeImg = $product->store->img;
+            $locationID = $product->store->location_id;
+            $location = Location::where('id', $locationID)->first();
+            $locationLongitude = $location->longitude;
+            $locationLatitude = $location->latitude;
 
 
             $categories = [];
@@ -327,10 +358,13 @@ class ProductController extends Controller
                 'details' => $details,
                 'img' => $img,
                 'created_at' => $created_at,
+                'storeID' => $storeID,
                 'storeName' => $storeName,
                 'storePhone' => $storePhone,
                 'storeStatus' => $storeStatus,
                 'storeImg' => $storeImg,
+                'locationLongitude' => $locationLongitude,
+                'locationLatitude' => $locationLatitude,
                 'categories' => $categories,
             ];
         }

@@ -16,10 +16,10 @@ return new class extends Migration
             $table->double('product_price');
             $table->string('product_note')->nullable();
             $table->integer('quantity');
-            $table->double('total_amount');
-            $table->double('delivery_amount');
+            $table->double('productTotalAmount');
+            // $table->double('delivery_amount');
             // $table->double('discount_amount');
-            $table->foreignId('delivered_by')->references('id')->on('delivery_agents');
+            // $table->foreignId('delivered_by')->references('id')->on('delivery_agents');
             $table->foreignId('product_id')->references('id')->on('products');
             // $table->foreignId('discount_code_id')->references('id')->on('discount_codes');
             $table->foreignId('order_id')->references('id')->on('orders');

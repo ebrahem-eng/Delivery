@@ -27,6 +27,7 @@ class OrderController extends Controller
             $orderLocationDetails[$order->id] = $location_details;
         }
 
+        // dd($orders);
         return view('Store.Order.newOrder', compact('orders', 'orderLocationDetails'));
     }
 

@@ -25,9 +25,18 @@ use Illuminate\Support\Facades\Route;
 // ], function ($router) {
 
 Route::middleware(['userD', 'auth:userD'])->group(function () {
+
+    //=================================order ========================
+
     //get order count 
 
     Route::get('/order/count', [OrderController::class, 'get_count_order']);
+
+    //store order 
+
+
+    Route::post('/order/store', [OrderController::class, 'storeOrder']);
+
 
     // ================================= product =======================
 
@@ -71,6 +80,14 @@ Route::middleware(['userD', 'auth:userD'])->group(function () {
     //get type store
 
     Route::get('/store/type', [StoreController::class, 'get_store_type']);
+
+    //get distance between user and store
+
+    Route::get('/store/distance', [StoreController::class, 'CalculateDistance']);
+
+     //get delivery fee for store
+
+     Route::get('/store/deliveryFee', [StoreController::class, 'CalculateDeliveryFee']);
 
     //========================= Location ============================
 

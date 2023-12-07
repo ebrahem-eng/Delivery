@@ -20,8 +20,8 @@ class LocationSeeder extends Seeder
             'floor'=> '1',
             'near'=>'loc 2',
             'another_details'=>'no details',
-            'longitude' => '33.513',
-            'latitude' => '36.296',
+            'longitude' => '36.303768811730095',
+            'latitude' => '33.4943803229405',
         ]);
 
         Location::create([
