@@ -23,7 +23,8 @@ class DeliveryAgentSedeer extends Seeder
             'status_accept_order'=>'1',
             'age'=>'23',
             'gender'=>'1',
-            'created_by'=>'1'
+            'created_by'=>'1',
+            'deliveryAgentLocationID' => '1',
         ]);
     }
 }

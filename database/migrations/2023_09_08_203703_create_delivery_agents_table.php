@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('img')->nullable();
             $table->foreignId('created_by')->references('id')->on('admins');
+            $table->foreignId('deliveryAgentLocationID')->references('id')->on('delivery_agent_locations');
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

@@ -14,7 +14,7 @@ class StoreSeeder extends Seeder
     public function run(): void
     {
         Store::create([
-            'name' => 'store',
+            'name' => 'AlZain',
             'email' => 'store@gmail.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -29,7 +29,7 @@ class StoreSeeder extends Seeder
         ]);
 
         Store::create([
-            'name' => 'store2',
+            'name' => 'AlKamal',
             'email' => 'store2@gmail.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -44,7 +44,7 @@ class StoreSeeder extends Seeder
         ]);
 
         Store::create([
-            'name' => 'store3',
+            'name' => 'Five Star',
             'email' => 'store3@gmail.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -59,7 +59,7 @@ class StoreSeeder extends Seeder
         ]);
 
         Store::create([
-            'name' => 'store4',
+            'name' => 'AlAgha',
             'email' => 'store4@gmail.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

@@ -257,10 +257,34 @@
                                                             </div>
                                                         </div>
 
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <div class="form-group">
+                                                                    <label for="simpleInput">Location Name</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="simpleInput" placeholder="locationName"
+                                                                        name="locationName" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <input type="hidden" id="latitudeStart" name="latitudeStart">
+                                                            <input type="hidden" id="latitudeEnd" name="latitudeEnd">
+                                                            <br>
+                                                            <input type="hidden" id="longitudeStart" name="longitudeStart">
+                                                            <input type="hidden" id="longitudeEnd" name="longitudeEnd">
+                                                        </div>
+                                                        
+                                                        <div id="map" style="height: 500px; width: 1000px;"></div>
+                                                        <div id="radiusSlider">
+                                                            <label for="radius">Radius:</label>
+                                                            <input type="range" id="radius" name="radius" min="100" max="5000" step="100" value="1000">
+                                                            <span id="radiusValue">1000 meters</span>
+                                                        </div>
                                                         <br>
                                                         <div>
-                                                            <button type="submit"
-                                                                class="btn btn-primary rounded">Ok</button>
+                                                            <button type="submit" class="btn btn-primary rounded">Ok</button>
                                                         </div>
 
 
@@ -277,6 +301,64 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var map, circle;
+    
+        function initMap() {
+            var myLatLng = { lat: -34.397, lng: 150.644 }; // default location
+    
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    myLatLng = { lat: position.coords.latitude, lng: position.coords.longitude };
+    
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 15,
+                        center: myLatLng
+                    });
+    
+                    // Create a circle with a default radius
+                    circle = new google.maps.Circle({
+                        map: map,
+                        center: myLatLng,
+                        radius: parseInt(document.getElementById('radius').value),
+                        editable: true,
+                    });
+    
+                    // Add event listener to circle for radius and center update
+                    google.maps.event.addListener(circle, 'center_changed', function() {
+                        updateCircle();
+                    });
+                    google.maps.event.addListener(circle, 'radius_changed', function() {
+                        updateCircle();
+                    });
+    
+                    updateCircle(); // Initialize hidden input values
+    
+                }, function() {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+            } else {
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+        }
+    
+        function updateCircle() {
+            var circleCenter = circle.getCenter();
+            var circleRadius = circle.getRadius();
+    
+            document.getElementById('latitudeStart').value = circleCenter.lat() - (circleRadius / 111.32);
+            document.getElementById('latitudeEnd').value = circleCenter.lat() + (circleRadius / 111.32);
+            document.getElementById('longitudeStart').value = circleCenter.lng() - (circleRadius / (111.32 * Math.cos(circleCenter.lat() * (Math.PI / 180))));
+            document.getElementById('longitudeEnd').value = circleCenter.lng() + (circleRadius / (111.32 * Math.cos(circleCenter.lat() * (Math.PI / 180))));
+    
+            document.getElementById('radiusValue').innerText = circleRadius + " meters";
+        }
+    </script>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBddryhfLC4gYIvreVc9YDY4gLv2BrhhmY&callback=initMap"></script>
+
 
 </body>
 

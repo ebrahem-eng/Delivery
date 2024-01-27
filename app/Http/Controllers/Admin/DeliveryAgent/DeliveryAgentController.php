@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\DeliveryAgent\CreateDeliveryAgentRequest;
 use App\Http\Requests\Admin\DeliveryAgent\UpdateDeliveryAgentRequest;
 use App\Models\DeliveryAgent;
+use App\Models\DeliveryAgentLocation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -32,6 +33,22 @@ class DeliveryAgentController extends Controller
         $adminID = Auth::guard('admin')->user()->id;
         $image = $request->file('img')->getClientOriginalName();
         $path = $request->file('img')->storeAs('DeliveryAgentImage', $image, 'deliveryAgentImage');
+        $locationName = $request->input('locationName');
+        $latitudeStart = $request->input('latitudeStart');
+        $latitudeEnd = $request->input('latitudeEnd');
+        $longitudeStart = $request->input('longitudeStart');
+        $longitudeEnd = $request->input('longitudeEnd');
+
+        $locationDelivery = DeliveryAgentLocation::create([
+        'name' => $locationName,
+        'longitudeStart' => $longitudeStart,
+        'longitudeEnd' => $longitudeEnd,
+        'latitudeStart' => $latitudeStart,
+        'latitudeEnd' => $latitudeEnd,
+        ]);
+
+        $locationDeliveryID = $locationDelivery->id;
+        
 
         $check_email = DeliveryAgent::where('email', $email)->get();
         $check_phone = DeliveryAgent::where('phone', $phone)->get();
@@ -53,6 +70,7 @@ class DeliveryAgentController extends Controller
             'gender' => $request->input('gender'),
             'age' => $request->input('age'),
             'img' => $path,
+            'deliveryAgentLocationID' => $locationDeliveryID,
             'created_by' => $adminID,
         ]);
 

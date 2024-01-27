@@ -30,20 +30,38 @@ class DeliveryAgent extends Authenticatable implements JWTSubject
         'age',
         'phone',
         'img',
+        'deliveryAgentLocationID',
 
     ];
+
+    //علاقة المدير مع عامل التوصيل
 
     public function admin()
     {
         return $this->belongsTo(Admin::class , 'created_by');
     }
 
-     //علاقة عامل التوصيل مع تفاصيل الطلب
+    //  //علاقة عامل التوصيل مع تفاصيل الطلب
 
-     public function orderDetailsAgents()
+    //  public function orderDetailsAgents()
+    //  {
+    //      return $this->hasMany(Order_Details::class,'delivered_by');
+    //  }
+
+
+     //علاقة عامل التوصيل مع موقع عامل التوصيل 
+
+     public function deliveryAgentLocation()
      {
-         return $this->hasMany(Order_Details::class,'delivered_by');
+         return $this->belongsTo(DeliveryAgentLocation::class , 'deliveryAgentID');
      }
+
+      //علاقة عامل التوصيل مع الطلب
+
+      public function deliverOrder()
+      {
+          return $this->hasMany(DeliveryAgentOrder::class,'deliveryAgentID');
+      }
     
 
     /**

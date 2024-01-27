@@ -66,4 +66,11 @@ class Order extends Model
     {
         return $this->hasMany(DiscountCode_Order::class, 'order_id');
     }
+
+      //علاقة الطلب مع طلبات عامل التوصيل
+
+      public function deliveryAgentOrder()
+      {
+          return $this->hasMany(DeliveryAgentOrder::class, 'orderID');
+      }
 }

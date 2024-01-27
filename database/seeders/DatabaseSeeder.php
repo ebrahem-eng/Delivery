@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\DeliveryAgentLocation;
 use App\Models\DiscountCode;
 use App\Models\Order_Details;
 use Illuminate\Database\Seeder;
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CatigorySeeder::class);
         $this->call(LocationSeeder::class);
         $this->call(StoreSeeder::class);
+        $this->call(DeliveryAgentLocationSeeder::class);
         $this->call(DeliveryAgentSedeer::class);
         $this->call(DiscountCodeSeeder::class);
         $this->call(ProductSeeder::class);
