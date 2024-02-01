@@ -52,7 +52,7 @@ return [
 
         'deliveryAgent' => [
             'driver' => 'jwt',
-            'provider' => 'deliveries',
+            'provider' => 'deliveryAgents',
         ],
 
         'userD' => [
@@ -94,7 +94,7 @@ return [
             'model' => App\Models\Store::class,
         ],
 
-        'deliveries' => [
+        'deliveryAgents' => [
             'driver' => 'eloquent',
             'model' => App\Models\DeliveryAgent::class,
         ],

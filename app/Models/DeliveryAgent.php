@@ -13,12 +13,7 @@ class DeliveryAgent extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable , SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    // protected $guard = 'deliveryAgent';
+
     protected $fillable = [
         'name',
         'email',
