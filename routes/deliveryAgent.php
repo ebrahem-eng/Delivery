@@ -30,6 +30,7 @@ Route::middleware(['deliveryAgent', 'auth:deliveryAgent'])->group(function () {
 
      Route::get('/order/new/details', [OrderController::class, 'getNewOrderDetails']);
 
+     Route::get('/order/new/store/location', [OrderController::class, 'getNewOrderStoreLocation']);
 
 
 });

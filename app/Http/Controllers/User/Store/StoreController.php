@@ -276,9 +276,9 @@ class StoreController extends Controller
         $a = sin($dLat / 2) * sin($dLat / 2) + cos(deg2rad($userLatitude)) * cos(deg2rad($storeLatitude)) * sin($dLon / 2) * sin($dLon / 2);
         $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
 
-        $distance = $R * $c; // Distance in kilometers
+        $distance = $R * $c / 10; // Distance in kilometers
 
-        $distanceInt = (int) $distance;
+        $distanceInt = (int) $distance ;
 
         return $this->Data($distanceInt, 'Distance Retrieved Successfully', 200);
     }
