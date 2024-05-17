@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\DiscountCode\DiscountCodeController;
 use App\Http\Controllers\User\Location\LocationController;
+use App\Http\Controllers\User\Order\Chat\ChatController;
 use App\Http\Controllers\User\Order\OrderController;
 use App\Http\Controllers\User\Product\ProductController;
 use App\Http\Controllers\User\Store\StoreController;
@@ -85,9 +86,9 @@ Route::middleware(['userD', 'auth:userD'])->group(function () {
 
     Route::get('/store/distance', [StoreController::class, 'CalculateDistance']);
 
-     //get delivery fee for store
+    //get delivery fee for store
 
-     Route::get('/store/deliveryFee', [StoreController::class, 'CalculateDeliveryFee']);
+    Route::get('/store/deliveryFee', [StoreController::class, 'CalculateDeliveryFee']);
 
     //========================= Location ============================
 
@@ -116,4 +117,22 @@ Route::middleware(['userD', 'auth:userD'])->group(function () {
     Route::get('/discount/code/ByName', [DiscountCodeController::class, 'getDiscountCodeByName']);
 
     Route::get('/discount/code/ByIDs', [DiscountCodeController::class, 'getDiscountCodeByIDs']);
+
+
+    //=============================== Active Order Route ============================
+
+    Route::get('/order/active', [OrderController::class, 'getActiveOrder']);
+
+    Route::get('/order/active/details', [OrderController::class, 'getActiveOrderDetails']);
+
+    Route::put('/order/active/track/order', [OrderController::class, 'trackActiveOrder']);
+
+    Route::get('/order/active/get/code', [OrderController::class, 'getCodeOrder']);
+
+    //=============================== Message Order Route ============================
+
+    Route::get('/order/chat/user/message' , [ChatController::class , 'getUserMessage']);
+    
+    Route::post('/order/chat/send/message', [ChatController::class, 'sendMessage']);
+    
 });

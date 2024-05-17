@@ -252,13 +252,13 @@
                                             </div>
                                             <br>
 
-                                            <form method="POST"
+                                            {{-- <form method="POST"
                                             action="{{ route('store.order.new.order.aaccept.delivery', $order->id) }}">
                                             @csrf
                                             <button type="submit"
                                                 class="btn btn-success rounded"
                                                >Accept Delivery Agent</button>
-                                        </form>
+                                        </form> --}}
                                             @endif
                                          
                                             </td>

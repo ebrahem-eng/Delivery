@@ -67,8 +67,8 @@ Route::middleware(['Store'])->name('store.')->prefix('store')->group(function ()
     Route::get('/catigory/restore/{id}', [CatigoryController::class, 'restore'])->name('catigory.restore');
 
 
-    //route to delete later
-    Route::post('/order/new/order/accept/delivery/{id}', [OrderController::class, 'new_order_accept_delivery'])->name('order.new.order.aaccept.delivery');
+    // //route to delete later
+    // Route::post('/order/new/order/accept/delivery/{id}', [OrderController::class, 'new_order_accept_delivery'])->name('order.new.order.aaccept.delivery');
 
     //profile routes
 

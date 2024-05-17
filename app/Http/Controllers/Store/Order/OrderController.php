@@ -118,7 +118,7 @@ class OrderController extends Controller
         // Step 9: Assign Order to Selected Delivery Agent
         DeliveryAgentOrder::create([
             'details' => "no det",
-            'status' => 1, // Set appropriate status value
+            'status' => 0, // Set appropriate status value
             'expectedDeliveryTime' => 0,
             'realDeliveryTime' => 0, // Initial value
             'orderID' => $order->id,
@@ -262,17 +262,17 @@ class OrderController extends Controller
         return view('Store.Order.finishOrder', compact('orders', 'orderLocationDetails'));
     }
 
-    public function new_order_accept_delivery($id)
-    {
-        $order = Order::findOrfail($id);
-        if ($order) {
-            $order->update([
-                'order_status' => 'accept delivery pending for preparation',
-            ]);
+    // public function new_order_accept_delivery($id)
+    // {
+    //     $order = Order::findOrfail($id);
+    //     if ($order) {
+    //         $order->update([
+    //             'order_status' => 'accept delivery pending for preparation',
+    //         ]);
 
-            return redirect()->back()->with('success_message', 'Order Accepted By Delivery Agent Successfully');
-        } else {
-            return redirect()->back()->with('error_message', 'Order Not Found');
-        }
-    }
+    //         return redirect()->back()->with('success_message', 'Order Accepted By Delivery Agent Successfully');
+    //     } else {
+    //         return redirect()->back()->with('error_message', 'Order Not Found');
+    //     }
+    // }
 }
